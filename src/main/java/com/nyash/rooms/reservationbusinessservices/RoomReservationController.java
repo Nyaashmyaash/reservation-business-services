@@ -1,5 +1,6 @@
 package com.nyash.rooms.reservationbusinessservices;
 
+import com.nyash.rooms.reservationbusinessservices.client.RoomService;
 import com.nyash.rooms.reservationbusinessservices.domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -16,13 +17,10 @@ import java.util.List;
 public class RoomReservationController {
 
     @Autowired
-    private RestTemplate restTemplate;
+    private RoomService roomService;
 
     @RequestMapping(value = "/rooms", method = RequestMethod.GET)
     public List<Room> getAllRooms(){
-        ResponseEntity<List<Room>> roomsResponse = this.restTemplate.exchange(
-                "http://ROOMSERVICES/rooms", HttpMethod.GET, null, new ParameterizedTypeReference<List<Room>>() {
-                });
-        return roomsResponse.getBody();
+        return this.roomService.findAll(null);
     }
 }
