@@ -11,6 +11,7 @@ import java.util.List;
 
 @FeignClient("GUESTSERVICES")
 public interface GuestService {
+
     @RequestMapping(value = "/guests", method = RequestMethod.GET)
     List<Guest> findAll(@RequestParam(name = "emailAddress", required = false)String emailAddress);
 
