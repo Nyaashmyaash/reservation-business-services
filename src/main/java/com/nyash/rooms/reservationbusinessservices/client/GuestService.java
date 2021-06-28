@@ -16,5 +16,5 @@ public interface GuestService {
     List<Guest> findAll(@RequestParam(name = "emailAddress", required = false)String emailAddress);
 
     @RequestMapping(value = "/guests/{id}", method = RequestMethod.GET)
-    Guest findOne(@PathVariable(name = "id")long id);
+    Guest findById(@PathVariable(name = "id")long id);
 }

@@ -46,7 +46,7 @@ public class RoomReservationBusinessProcess {
         Iterable<Reservation> reservations = this.reservationService.findAll(dateString);
         if (null != reservations){
             reservations.forEach(reservation -> {
-                Guest guest = this.guestService.findOne(reservation.getGuestId());
+                Guest guest = this.guestService.findById(reservation.getGuestId());
                 if (null != guest) {
                     RoomReservation roomReservation = roomReservationMap.get(reservation.getRoomId());
                     roomReservation.setDate(reservation.getReservationDate());
